@@ -65,86 +65,9 @@ function Form() {
 
   return (
     <>
-      <div className="field">
-        <label className="label">Household</label>
-        <div className="control">
-          <div className="select" style={{ width: '100%' }}>
-            <select
-              className={styles.vaccinationOpts}
-              value={household}
-              onChange={onChangeHousehold}
-            >
-              <option value="same">Same</option>
-              <option value="different">Different</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      {people.map((person, index) => (
-        <div className={`card ${styles.personCard}`} key={index}>
-          <div className="card-content">
-            <div className="columns is-mobile">
-              <div className="column">
-                <div className="control">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder={`Person ${index + 1}`}
-                    value={person.name}
-                    onChange={onUpdateName(index)}
-                  />
-                </div>
-              </div>
-              <div className={`column ${styles.deleteBtn}`}>
-                <button
-                  className="button is-danger has-text-weight-medium is-outlined"
-                  onClick={onDeletePerson(index)}
-                  disabled={index === 0 && people.length === 1}
-                >
-                  &#10006;
-                </button>
-              </div>
-            </div>
-            <div className="columns">
-              <div className="column is-full">
-                <div className="control">
-                  <div className="select" style={{ width: '100%' }}>
-                    <select
-                      disabled={person.isChild}
-                      value={person.status}
-                      className={styles.vaccinationOpts}
-                      onChange={onUpdateStatus(index)}
-                    >
-                      {VACCINATION_OPTIONS.map((opt) => (
-                        <option key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <label className="checkbox">
-              <input
-                type="checkbox"
-                checked={person.isChild}
-                onChange={onChangeChildStatus(index)}
-              />
-              {` `}Is under 12 years old
-            </label>
-          </div>
-        </div>
-      ))}
-      <button
-        onClick={onAddPerson}
-        className="mt-4 button is-primary has-text-weight-medium"
-      >
-        Add person
-      </button>
-      <footer className={`box ${styles.result}`}>
+      <section className={`box ${styles.result}`}>
         <span className="has-text-weight-medium">Results:</span> {people.length}{' '}
-        pax,
+        pax:
         {canDine(people, household) ? (
           <span className="tag is-primary is-medium has-text-weight-medium ml-2">
             Can eat
@@ -154,7 +77,88 @@ function Form() {
             Cannot eat
           </span>
         )}
-      </footer>
+      </section>
+      <div className={styles.form}>
+        <div className="field">
+          <label className="label">Household</label>
+          <div className="control">
+            <div className="select" style={{ width: '100%' }}>
+              <select
+                className={styles.vaccinationOpts}
+                value={household}
+                onChange={onChangeHousehold}
+              >
+                <option value="same">Same</option>
+                <option value="different">Different</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        {people.map((person, index) => (
+          <div className={`card ${styles.personCard}`} key={index}>
+            <div className="card-content">
+              <div className="columns is-mobile">
+                <div className="column">
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="text"
+                      placeholder={`Person ${index + 1}`}
+                      value={person.name}
+                      onChange={onUpdateName(index)}
+                    />
+                  </div>
+                </div>
+                <div className={`column ${styles.deleteBtn}`}>
+                  <button
+                    className="button is-danger has-text-weight-medium is-outlined"
+                    onClick={onDeletePerson(index)}
+                    disabled={index === 0 && people.length === 1}
+                  >
+                    &#10006;
+                  </button>
+                </div>
+              </div>
+              <div className="columns">
+                <div className="column is-full">
+                  <div className="control">
+                    <div className="select" style={{ width: '100%' }}>
+                      <select
+                        disabled={person.isChild}
+                        value={person.status}
+                        className={styles.vaccinationOpts}
+                        onChange={onUpdateStatus(index)}
+                      >
+                        {VACCINATION_OPTIONS.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <label className="checkbox">
+                <input
+                  type="checkbox"
+                  checked={person.isChild}
+                  onChange={onChangeChildStatus(index)}
+                />
+                {` `}Is under 12 years old
+              </label>
+            </div>
+          </div>
+        ))}
+        {people.length < 5 && (
+          <button
+            onClick={onAddPerson}
+            className="mt-4 button is-primary has-text-weight-medium"
+          >
+            Add person
+          </button>
+        )}
+      </div>
     </>
   );
 }
