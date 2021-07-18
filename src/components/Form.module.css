@@ -1,0 +1,18 @@
+.personCard {
+  margin: 1rem 0;
+}
+
+.deleteBtn {
+  flex: 0 0 0;
+}
+
+.vaccinationOpts {
+  width: 100%;
+}
+
+.result {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
