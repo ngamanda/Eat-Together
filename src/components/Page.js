@@ -12,6 +12,16 @@ function Page() {
       </p>
       <br />
       <Form />
+      <p className="mt-6 has-text-centered is-size-7">
+        Made by{` `}
+        <a
+          rel="noopener noreferrer"
+          href="https://www.ngamanda.com/"
+          target="_blank"
+        >
+          Amanda Ng
+        </a>
+      </p>
     </div>
   );
 }
