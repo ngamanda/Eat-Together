@@ -1,10 +1,10 @@
 export const FULLY_VACINNATED = {
-  label: '💉 Fully Vacinnated',
-  value: 'fully_vacinnated',
+  label: '💉 Fully Vaccinated',
+  value: 'fully_vaccinated',
 };
 
 export const PARTIAL_VACINATED = {
-  label: '😷 Partially Vacinnated',
+  label: '😷 Partially Vaccinated',
   value: 'partially_vaccinated',
 };
 
