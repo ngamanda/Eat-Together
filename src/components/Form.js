@@ -65,7 +65,7 @@ function Form() {
 
   return (
     <>
-      <section className={`box ${styles.result}`}>
+      <section className={`container box ${styles.result}`}>
         <span className="has-text-weight-medium">Results:</span> {people.length}{' '}
         pax:
         {canDine(people, household) ? (
@@ -78,7 +78,7 @@ function Form() {
           </span>
         )}
       </section>
-      <div className={styles.form}>
+      <div className={`container ${styles.form}`}>
         <div className="field">
           <label className="label">Household</label>
           <div className="control">
