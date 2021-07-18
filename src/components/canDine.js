@@ -15,6 +15,10 @@ const canDifferentHouseholdDine = (people) => {
 };
 
 const canDine = (people, household) => {
+  if (people.length > 5) {
+    return false;
+  }
+
   /* Can dine if it's 2 people */
   if (people.length <= 2) {
     return true;
